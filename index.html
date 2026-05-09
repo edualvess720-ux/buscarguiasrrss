@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MAGNI — Performance & Lifestyle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:'';
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#ff7b0015 0%,transparent 70%);
+    top:-250px;
+    right:-180px;
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#ffb34710 0%,transparent 70%);
+    bottom:-300px;
+    left:-220px;
+    z-index:-1;
+}
+
+.container{
+    width:100%;
+    max-width:1380px;
+    margin:auto;
+    padding:24px;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 35px;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:24px;
+    margin-bottom:24px;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.logo span{
+    color:#ff7b00;
+}
+
+.nav-links{
+    display:flex;
+    gap:32px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#b4b4b4;
+    transition:.3s;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(145deg,#0b0b0b,#121212);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:38px;
+    padding:95px 75px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 22px;
+    border-radius:999px;
+    background:#ff7b0012;
+    border:1px solid #ff7b0030;
+    color:#ff9d42;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:32px;
+}
+
+.hero h1{
+    font-size:86px;
+    line-height:.95;
+    letter-spacing:-5px;
+    font-weight:900;
+    max-width:980px;
+    margin-bottom:28px;
+}
+
+.hero p{
+    max-width:850px;
+    color:#9ca3af;
+    font-size:21px;
+    line-height:1.9;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    margin-top:48px;
+}
+
+.btn{
+    text-decoration:none;
+    padding:18px 32px;
+    border-radius:16px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#ff7b00;
+    color:#fff;
+}
+
+.btn-primary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(255,123,0,.25);
+}
+
+.btn-secondary{
+    background:#ffffff08;
+    border:1px solid rgba(255,255,255,.08);
+    color:#fff;
+}
+
+.btn-secondary:hover{
+    background:#ffffff12;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:24px;
+    margin-top:70px;
+}
+
+.feature{
+    background:#111;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:26px;
+    padding:34px;
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-7px);
+    border-color:#ff7b0040;
+    box-shadow:0 15px 45px rgba(255,123,0,.08);
+}
+
+.feature-icon{
+    font-size:44px;
+    margin-bottom:18px;
+}
+
+.feature h3{
+    font-size:23px;
+    margin-bottom:14px;
+}
+
+.feature p{
+    color:#9ca3af;
+    line-height:1.8;
+    font-size:15px;
+}
+
+.section{
+    margin-top:36px;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:34px;
+    padding:55px;
+}
+
+.section-title{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:-2px;
+    margin-bottom:38px;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:22px;
+}
+
+.category{
+    position:relative;
+    overflow:hidden;
+    min-height:240px;
+    border-radius:28px;
+    padding:34px;
+    background:linear-gradient(145deg,#151515,#0d0d0d);
+    border:1px solid rgba(255,255,255,.06);
+    transition:.3s;
+}
+
+.category:hover{
+    transform:translateY(-7px);
+    border-color:#ff7b0040;
+}
+
+.category h3{
+    font-size:28px;
+    margin-bottom:14px;
+}
+
+.category p{
+    color:#a1a1aa;
+    line-height:1.8;
+}
+
+.glow{
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:#ff7b0010;
+    right:-90px;
+    bottom:-90px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:26px;
+}
+
+.product{
+    background:#121212;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:28px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+    border-color:#ff7b0040;
+    box-shadow:0 18px 45px rgba(255,123,0,.08);
+}
+
+.product-image{
+    height:280px;
+    background:linear-gradient(145deg,#171717,#0d0d0d);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:70px;
+}
+
+.product-content{
+    padding:30px;
+}
+
+.tag{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#ff7b0012;
+    border:1px solid #ff7b0030;
+    color:#ff9d42;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:16px;
+}
+
+.product h3{
+    font-size:24px;
+    line-height:1.5;
+    margin-bottom:16px;
+}
+
+.product p{
+    color:#9ca3af;
+    line-height:1.8;
+    margin-bottom:22px;
+}
+
+.price{
+    font-size:34px;
+    font-weight:900;
+    margin-bottom:24px;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:#71717a;
+    font-size:18px;
+    margin-left:10px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;
+}
+
+.info{
+    background:#111;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:24px;
+    padding:30px;
+}
+
+.info span{
+    display:block;
+    color:#ff9d42;
+    font-size:13px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.info h4{
+    line-height:1.8;
+    color:#f3f4f6;
+}
+
+.footer{
+    margin-top:38px;
+    padding:50px 20px;
+    text-align:center;
+    color:#71717a;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+@media(max-width:768px){
+
+    .nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .hero{
+        padding:55px 30px;
+    }
+
+    .hero h1{
+        font-size:50px;
+        line-height:1;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .section{
+        padding:32px;
+    }
+
+    .section-title{
+        font-size:32px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <nav class="nav">
+
+        <div class="logo">
+            MAG<span>NI</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#">Performance</a>
+            <a href="#">Lifestyle</a>
+            <a href="#">Supplements</a>
+            <a href="#">Best Sellers</a>
+            <a href="#">Collections</a>
+        </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <div class="badge">
+            ● PERFORMANCE • LIFESTYLE • ENERGY • EVOLUTION
+        </div>
+
+        <h1>
+            EVOLUA SUA<br>
+            PERFORMANCE.<br>
+            ELEVE SUA ROTINA.
+        </h1>
+
+        <p>
+            Produtos desenvolvidos para performance, foco, energia e lifestyle moderno.
+            Fórmulas premium criadas para quem busca alta performance física e mental
+            com experiência sofisticada e resultados reais.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="https://magni.com.br/" target="_blank" class="btn btn-primary">
+                ACESSAR LOJA
+            </a>
+
+            <a href="https://magni.com.br/collections/mais-vendidos" target="_blank" class="btn btn-secondary">
+                MAIS VENDIDOS
+            </a>
+
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">⚡</div>
+
+                <h3>Energia & Foco</h3>
+
+                <p>
+                    Fórmulas modernas para aumentar energia, disposição e clareza mental.
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <div class="feature-icon">🔥</div>
+
+                <h3>Alta Performance</h3>
+
+                <p>
+                    Produtos criados para maximizar intensidade, resistência e resultados.
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <div class="feature-icon">💪</div>
+
+                <h3>Performance Física</h3>
+
+                <p>
+                    Suplementação premium para evolução constante nos treinos e rotina.
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <div class="feature-icon">🧠</div>
+
+                <h3>Mindset Premium</h3>
+
+                <p>
+                    Lifestyle voltado para disciplina, foco e evolução diária.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2 class="section-title">
+            CATEGORIAS EM DESTAQUE
+        </h2>
+
+        <div class="categories">
+
+            <div class="category">
+
+                <div class="glow"></div>
+
+                <h3>⚡ Pré-Treino</h3>
+
+                <p>
+                    Energia intensa para elevar sua performance ao máximo.
+                </p>
+
+            </div>
+
+            <div class="category">
+
+                <div class="glow"></div>
+
+                <h3>🔥 Fat Burners</h3>
+
+                <p>
+                    Fórmulas desenvolvidas para auxiliar definição e intensidade.
+                </p>
+
+            </div>
+
+            <div class="category">
+
+                <div class="glow"></div>
+
+                <h3>💪 Recovery</h3>
+
+                <p>
+                    Recuperação muscular inteligente para manter consistência diária.
+                </p>
+
+            </div>
+
+            <div class="category">
+
+                <div class="glow"></div>
+
+                <h3>🧠 Focus</h3>
+
+                <p>
+                    Clareza mental e foco extremo para produtividade e performance.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2 class="section-title">
+            BEST SELLERS
+        </h2>
+
+        <div class="products">
+
+            <div class="product">
+
+                <div class="product-image">
+                    ⚡
+                </div>
+
+                <div class="product-content">
+
+                    <div class="tag">
+                        BEST SELLER
+                    </div>
+
+                    <h3>
+                        Pré-Treino Energy Performance
+                    </h3>
+
+                    <p>
+                        Fórmula intensa para foco, energia e máxima explosão nos treinos.
+                    </p>
+
+                    <div class="price">
+                        R$149,90
+                        <span class="old-price">R$189,90</span>
+                    </div>
+
+                    <a href="https://magni.com.br/" target="_blank" class="btn btn-primary">
+                        VER PRODUTO
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="product">
+
+                <div class="product-image">
+                    🔥
+                </div>
+
+                <div class="product-content">
+
+                    <div class="tag">
+                        FAT BURNER
+                    </div>
+
+                    <h3>
+                        Thermo Performance Black Edition
+                    </h3>
+
+                    <p>
+                        Intensidade e aceleração metabólica para evolução diária.
+                    </p>
+
+                    <div class="price">
+                        R$129,90
+                        <span class="old-price">R$169,90</span>
+                    </div>
+
+                    <a href="https://magni.com.br/" target="_blank" class="btn btn-primary">
+                        VER PRODUTO
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="product">
+
+                <div class="product-image">
+                    💪
+                </div>
+
+                <div class="product-content">
+
+                    <div class="tag">
+                        RECOVERY
+                    </div>
+
+                    <h3>
+                        Recovery Formula Ultra Premium
+                    </h3>
+
+                    <p>
+                        Recuperação inteligente para manter consistência e performance.
+                    </p>
+
+                    <div class="price">
+                        R$139,90
+                        <span class="old-price">R$179,90</span>
+                    </div>
+
+                    <a href="https://magni.com.br/" target="_blank" class="btn btn-primary">
+                        VER PRODUTO
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2 class="section-title">
+            EXPERIÊNCIA MAGNI
+        </h2>
+
+        <div class="info-grid">
+
+            <div class="info">
+
+                <span>Performance</span>
+
+                <h4>
+                    Produtos desenvolvidos para intensidade e evolução constante.
+                </h4>
+
+            </div>
+
+            <div class="info">
+
+                <span>Fórmulas Premium</span>
+
+                <h4>
+                    Ingredientes modernos para alta performance física e mental.
+                </h4>
+
+            </div>
+
+            <div class="info">
+
+                <span>Entrega Nacional</span>
+
+                <h4>
+                    Envio rápido com rastreamento para todo Brasil.
+                </h4>
+
+            </div>
+
+            <div class="info">
+
+                <span>Pagamento Seguro</span>
+
+                <h4>
+                    Ambiente protegido e checkout seguro para compras online.
+                </h4>
+
+            </div>
+
+            <div class="info">
+
+                <span>Lifestyle</span>
+
+                <h4>
+                    Mais que suplementos. Uma mentalidade de evolução diária.
+                </h4>
+
+            </div>
+
+            <div class="info">
+
+                <span>Alta Performance</span>
+
+                <h4>
+                    Criado para quem vive intensidade, disciplina e resultados.
+                </h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="footer">
+
+        © 2026 MAGNI Performance & Lifestyle — Todos os direitos reservados.<br><br>
+
+        Desenvolvido para branding premium, performance e conversão.
+
+    </div>
+
+</div>
+
+</body>
+</html>
